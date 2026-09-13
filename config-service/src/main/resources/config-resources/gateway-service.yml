@@ -1,32 +1,32 @@
+server:
+  port: 8222
+
 spring:
   cloud:
     gateway:
       server:
         webflux:
           routes:
-            - id: department-service
-              uri:
-                lb://department-service
+            - id: customer-service
+              uri: lb://customer-service
               predicates:
-                - Path=/api/department/**
-              filters:
-                - StripPrefix=2
+                - Path=/api/customers/**
 
-            - id: employee-service
-              uri:
-                lb://employee-service
+            - id: account-service
+              uri: lb://account-service
               predicates:
-                - Path=/api/employee/**
-              filters:
-                - StripPrefix=2
-server:
-  port: 8080
+                - Path=/api/accounts/**
+
+            - id: loan-service
+              uri: lb://loan-service
+              predicates:
+                - Path=/api/loans/**
 
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      default-zone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true

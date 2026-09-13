@@ -1,1 +1,8 @@
 rootProject.name = 'IT214_Session07'
+
+include 'eureka-service'
+include 'config-service'
+include 'gateway-service'
+include 'customer-service'
+include 'account-service'
+include 'loan-service'
